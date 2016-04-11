@@ -2,9 +2,10 @@
 //Program: Homework 1 part 1
 //cs335 Spring 2016 HW 1
 //Purpose:
-	//This program demonstrates the use of OpenGL and XWindows
-	//This program also demonstrates the waterfall model
-	//Waterfall model: Requirements, Design, Coding, Testing, Maintenance
+//This program demonstrates the use of OpenGL and XWindows
+//This program also demonstrates the waterfall model
+//This program uses text
+//Waterfall model: Requirements, Design, Coding, Testing, Maintenance
 //
 #include <iostream>
 #include <cstdlib>
@@ -223,7 +224,7 @@ int check_keys(XEvent *e, Game *game)
 			return 1;
 		}
 		//You may check other keys here.
-		if(key == XK_b) {
+		if (key == XK_b) {
 			game->bubbles = !game->bubbles;
 		}
 	}
@@ -233,7 +234,7 @@ int check_keys(XEvent *e, Game *game)
 void movement(Game *game)//physics
 {
 	Particle *p;
-	if(game->bubbles){
+	if (game->bubbles) {
 		for(int i = MAX_PARTICLES; i >= 0; i--) {
 			makeParticle(game, game->lastMouse[0], WINDOW_HEIGHT 
 			- game->lastMouse[1]);
@@ -268,7 +269,7 @@ void movement(Game *game)//physics
 		diff1 = p->s.center.x - circle->center.x;
 		diff2 = p->s.center.y - circle->center.y;
 		distance = sqrt((diff1*diff1) + (diff2*diff2));
-		if(distance < circle->radius) {
+		if (distance < circle->radius) {
 	//	std::cout << "DISTANCE: " << distance << " RADIUS: " << circle->radius << std::endl;
 			//move particle to circle edge
 			p->s.center.x = circle->center.x + (diff1/distance) *
@@ -329,7 +330,7 @@ void render(Game *game)
 	//draw box w/ text
 	const char *text[5] = 
 		{"Requirements", "Design", "Coding", "Testing", "Maintenance"};
-	for(int i = 0; i < 5; i++){
+	for(int i = 0; i < 5; i++) {
 		Shape *arr;
 		glColor3ub(i*90,140,90);
 		arr = &game->array[i];
@@ -350,8 +351,7 @@ void render(Game *game)
 	}
 	//draw all particles here
 	glPushMatrix();
-	for(int i = 0; i < game->n; i++)
-	{
+	for(int i = 0; i < game->n; i++) {
 		glColor3ub(0,0,i*9 + 1);//making diff blues
 		Vec *c = &game->particle[i].s.center;
 		w = 2;//particle size
